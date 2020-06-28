@@ -51,18 +51,7 @@ const templateRunHandler = require('./template-run');
 
 const templateRenderHandler = require('./template-render');
 
-function templateMainHandler ( content ) {
-  var self = {};
-  var ctx = {};
-
-  ctx.content = content;
-
-  self.compile = templateCompileHandler.bind( ctx );
-  self.run = templateRunHandler.bind( ctx );
-  self.render = templateRenderHandler.bind( ctx );
-
-  return self;
-}
+const templateMainHandler = require('./template-main');
 template = templateMainHandler;
 
 function templateFileHandler ( filename ) {
