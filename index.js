@@ -49,14 +49,7 @@ const templateCompileHandler = require('./template-compile');
 
 const templateRunHandler = require('./template-run');
 
-function templateRenderHandler ( ctx, expression ) {
-  var self = this;
-  var input = templateRunHandler.call( self, ctx );
-  var ctx = { content: expression };
-  var out = templateCompileHandler.call( ctx, input );
-
-  return out;
-}
+const templateRenderHandler = require('./template-render');
 
 function templateMainHandler ( content ) {
   var self = {};
