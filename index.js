@@ -45,25 +45,7 @@ root.delimiter = templateDelimiterHandler;
 const templateReplaceHandler = require('./template-replace');
 root.replace = templateReplaceHandler;
 
-function templateCompileHandler ( ctx ) {
-  var self = this;
-  var out = self.content;
-  var piece = null;
-  var delimitation = null;
-  var content = null;
-  var start = s;
-  var end = e;
-
-  while ( root.delimiter( out )[0] !== -1 ) {
-    delimitation = root.delimiter( out );
-    content = delimitation[2];
-    delimitation[2] = root.replace( content, ctx );
-
-    out = out.replace( start + content + end, delimitation[2] );
-  }
-
-  return out;
-}
+const templateCompileHandler = require('./template-compile');
 
 function templateRunHandler ( ctx ) {
   var self = this;
