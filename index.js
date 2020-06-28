@@ -6,9 +6,7 @@ var fs = require('fs');
 var path = require('path');
 var util = require('util');
 // identifiers
-var s = '{{';
-var e = '}}';
-var ext = '.mic';
+const {s, e, ext} = require('./template-constants');
 
 class Template {
   constructor(expression) {
@@ -44,21 +42,7 @@ root.Instance = Template;
 const templateDelimiterHandler = require('./template-delimiter');
 root.delimiter = templateDelimiterHandler;
 
-function templateReplaceHandler ( content, ctx ) {
-  var out = content;
-  var keys = Object.keys( ctx );
-
-  function keyMapHandler ( item, idx, c ) {
-    var self = this;
-
-    while ( out.match( item ) ) {
-      out = out.replace( item, self[ item ] );
-    }
-  }
-  keys.map( keyMapHandler.bind( ctx ) );
-
-  return out;
-}
+const templateReplaceHandler = require('./template-replace');
 root.replace = templateReplaceHandler;
 
 function templateCompileHandler ( ctx ) {
