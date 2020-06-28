@@ -57,7 +57,7 @@ describe('Template delimiter', function () {
   });
 });
 
-describe('Template', function () {
+describe('Template replace', function () {
   it('should be replace by a context variable', function () {
     var actual = new template.Instance(' hello ');
     var expected = ' buzz ';
@@ -109,7 +109,9 @@ describe('Template', function () {
       .should
       .eql( expected );
   });
+});
 
+describe('Template', function () {
   it('context', function () {
     var actual = '{{ hello }} {{ world }}';
     var expected = ' fizz   buzz ';
