@@ -224,6 +224,22 @@ describe('Template render', function () {
       .eql(expected);
   });
 
+  it('should have processed data from file', function () {
+    var actual = new template.Instance();
+    var filename = './test/case/render.mic';
+    var ctx = {
+      firstValue: 2,
+      secondValue: 3,
+    };
+    var renderExpression = '{{result, firstValue, secondValue}}';
+    var expected = '5, 2, 3';
+
+    actual
+      .renderFile(filename, ctx, renderExpression)
+      .should
+      .eql(expected);
+  });
+
   it('render', function () {
     var expression = '{{var result = firstValue + secondValue}}';
     var ctx = {

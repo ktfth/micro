@@ -34,6 +34,10 @@ class Template {
   render(ctx, renderExpression) {
     return template(this.expression).render(ctx, renderExpression);
   }
+
+  renderFile(filename, ctx, renderExpression) {
+    return template.file(filename).render(ctx, renderExpression);
+  }
 }
 root.Instance = Template;
 
