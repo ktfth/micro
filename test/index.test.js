@@ -1,13 +1,15 @@
 var should = require('should');
 var template = require('../');
 
-describe('Template delimiter', function () {
+describe('Template', function () {
   it('should be an instance of', function () {
     var actual = new template.Instance();
 
     actual.should.be.an.instanceOf(template.Instance);
   });
+});
 
+describe('Template delimiter', function () {
   it('should delimiter have positions of the occurrence', function () {
     var actual = new template.Instance('{{ hello }}');
     var expected = [
