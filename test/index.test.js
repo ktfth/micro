@@ -8,6 +8,18 @@ describe('Template', function () {
     actual.should.be.an.instanceOf(template.Instance);
   });
 
+  it('should delimiter have positions of the occurrence', function () {
+    var actual = new template.Instance('{{ hello }}');
+    var expected = [
+      0, 9, ' hello ',
+    ];
+
+    actual
+      .delimiter()
+      .should
+      .eql(expected);
+  });
+
   it('delimiter', function () {
     var actual = '{{ hello }}';
     var expected = [

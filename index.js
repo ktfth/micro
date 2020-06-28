@@ -11,7 +11,13 @@ var e = '}}';
 var ext = '.mic';
 
 class Template {
-  constructor() {}
+  constructor(expression) {
+    this.expression = expression;
+  }
+
+  delimiter() {
+    return templateDelimiterHandler(this.expression);
+  }
 }
 root.Instance = Template;
 
