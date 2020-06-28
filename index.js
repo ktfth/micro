@@ -54,14 +54,7 @@ const templateRenderHandler = require('./template-render');
 const templateMainHandler = require('./template-main');
 template = templateMainHandler;
 
-function templateFileHandler ( filename ) {
-  var hasExt = ~( filename.indexOf( ext ) );
-  var filename = ( hasExt ) ? filename : [ filename, ext ].join('');
-  var filepath = path.resolve( process.cwd(), filename );
-  var content = fs.readFileSync( filepath, 'utf-8' );
-
-  return template( content );
-}
+const templateFileHandler = require('./template-file');
 root.file = templateFileHandler;
 
 // static methods
