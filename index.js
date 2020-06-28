@@ -47,17 +47,7 @@ root.replace = templateReplaceHandler;
 
 const templateCompileHandler = require('./template-compile');
 
-function templateRunHandler ( ctx ) {
-  var self = this;
-  var input = templateCompileHandler.call( self, ctx );
-  var ctx = vm.createContext( ctx );
-  var cache = 'micro.vm';
-  var VM = vm.runInContext( input, ctx, cache );
-
-  ctx._compiled = input;
-
-  return ctx;
-}
+const templateRunHandler = require('./template-run');
 
 function templateRenderHandler ( ctx, expression ) {
   var self = this;
