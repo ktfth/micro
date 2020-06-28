@@ -112,6 +112,36 @@ describe('Template replace', function () {
 });
 
 describe('Template', function () {
+  it('should have a context replacement', function () {
+      var actual = new template.Instance('{{ hello }} {{ world }}');
+      var expected = ' fizz   buzz ';
+      var ctx = {
+        hello: 'fizz',
+        world: 'buzz',
+      };
+
+      actual
+        .compile(ctx)
+        .should
+        .eql(expected);
+  });
+
+  it('should have a contenxt replacement with a vm', function () {
+    var actual = new template.Instance(
+      '{{var result = firstValue + secondValue;}}'
+    );
+    var ctx = {
+      firstValue: 2,
+      secondValue: 3,
+    };
+
+    actual
+      .run(ctx)
+      .should
+      .have
+      .property('result', 5);
+  })
+
   it('context', function () {
     var actual = '{{ hello }} {{ world }}';
     var expected = ' fizz   buzz ';

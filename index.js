@@ -22,6 +22,14 @@ class Template {
   replace(ctx) {
     return templateReplaceHandler(this.expression, ctx);
   }
+
+  compile(ctx) {
+    return template(this.expression).compile(ctx);
+  }
+
+  run(ctx) {
+    return template(this.expression).run(ctx);
+  }
 }
 root.Instance = Template;
 
