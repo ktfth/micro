@@ -2,8 +2,14 @@ var should = require('should');
 var template = require('../');
 
 describe('Template', function () {
+  it('should be an instance of', function () {
+    var actual = new template.Instance();
+
+    actual.should.be.an.instanceOf(template.Instance);
+  });
+
   it('delimiter', function () {
-    var actual = '{{ hello }}';  
+    var actual = '{{ hello }}';
     var expected = [
       0, 9, ' hello '
     ];
@@ -15,7 +21,7 @@ describe('Template', function () {
   });
 
   it('delimiter forward', function () {
-    var actual = '{{ hello }} {{ world }}';  
+    var actual = '{{ hello }} {{ world }}';
     var expected = [
       12, 21, ' world '
     ];
@@ -27,10 +33,10 @@ describe('Template', function () {
   });
 
   it('replace', function () {
-    var actual = ' hello ';  
+    var actual = ' hello ';
     var expected = ' buzz ';
     var ctx = {
-      hello: 'buzz'  
+      hello: 'buzz'
     };
 
     template
@@ -40,10 +46,10 @@ describe('Template', function () {
   });
 
   it('replace forward', function () {
-    var actual = ' hello, hello ';  
+    var actual = ' hello, hello ';
     var expected = ' buzz, buzz ';
     var ctx = {
-      hello: 'buzz'  
+      hello: 'buzz'
     };
 
     template
@@ -65,10 +71,10 @@ describe('Template', function () {
       .compile( ctx )
       .should
       .eql( expected );
-  });  
+  });
 
   it('vm context', function () {
-    var actual = '{{var result = firstValue + secondValue;}}';  
+    var actual = '{{var result = firstValue + secondValue;}}';
     var ctx = {
       firstValue: 2,
       secondValue: 3,
@@ -83,7 +89,7 @@ describe('Template', function () {
   });
 
   it('vm context _compiled', function () {
-    var actual = '{{var result = firstValue + secondValue;}}';  
+    var actual = '{{var result = firstValue + secondValue;}}';
     var expected = 'var result = 2 + 3;';
     var ctx = {
       firstValue: 2,
@@ -99,7 +105,7 @@ describe('Template', function () {
   });
 
   it('render', function () {
-    var expression = '{{var result = firstValue + secondValue}}';  
+    var expression = '{{var result = firstValue + secondValue}}';
     var ctx = {
       firstValue: 2,
       secondValue: 3,
@@ -115,7 +121,7 @@ describe('Template', function () {
   });
 
   it('render from file', function () {
-    var filename = './test/case/render.mic';  
+    var filename = './test/case/render.mic';
     var ctx = {
       firstValue: 2,
       secondValue: 3,

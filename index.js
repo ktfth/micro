@@ -1,4 +1,4 @@
-var root = this; 
+var root = this;
 var template = null;
 // core modules
 var vm = require('vm');
@@ -9,6 +9,11 @@ var util = require('util');
 var s = '{{';
 var e = '}}';
 var ext = '.mic';
+
+class Template {
+  constructor() {}
+}
+root.Instance = Template;
 
 function templateDelimiterHandler ( content, pointer ) {
   var out = [];
@@ -36,7 +41,7 @@ function templateReplaceHandler ( content, ctx ) {
     }
   }
   keys.map( keyMapHandler.bind( ctx ) );
-  
+
   return out;
 }
 root.replace = templateReplaceHandler;
@@ -62,7 +67,7 @@ function templateCompileHandler ( ctx ) {
 }
 
 function templateRunHandler ( ctx ) {
-  var self = this;  
+  var self = this;
   var input = templateCompileHandler.call( self, ctx );
   var ctx = vm.createContext( ctx );
   var cache = 'micro.vm';
@@ -98,7 +103,7 @@ template = templateMainHandler;
 
 function templateFileHandler ( filename ) {
   var hasExt = ~( filename.indexOf( ext ) );
-  var filename = ( hasExt ) ? filename : [ filename, ext ].join(''); 
+  var filename = ( hasExt ) ? filename : [ filename, ext ].join('');
   var filepath = path.resolve( process.cwd(), filename );
   var content = fs.readFileSync( filepath, 'utf-8' );
 
@@ -107,6 +112,7 @@ function templateFileHandler ( filename ) {
 root.file = templateFileHandler;
 
 // static methods
+template.Instance = root.Instance;
 template.delimiter = root.delimiter;
 template.replace = root.replace;
 template.file = root.file;
