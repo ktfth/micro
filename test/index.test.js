@@ -126,7 +126,7 @@ describe('Template', function () {
         .eql(expected);
   });
 
-  it('should have a contenxt replacement with a vm', function () {
+  it('should have a context replacement with a vm', function () {
     var actual = new template.Instance(
       '{{var result = firstValue + secondValue;}}'
     );
@@ -140,7 +140,24 @@ describe('Template', function () {
       .should
       .have
       .property('result', 5);
-  })
+  });
+
+  it('should have a context replacement with a vm _compiled', function () {
+    var actual = new template.Instance(
+      '{{var result = firstValue + secondValue;}}'
+    );
+    var expected = 'var result = 2 + 3;';
+    var ctx = {
+      firstValue: 2,
+      secondValue: 3,
+    };
+
+    actual
+      .run(ctx)
+      .should
+      .have
+      .property('_compiled', expected);
+  });
 
   it('context', function () {
     var actual = '{{ hello }} {{ world }}';
