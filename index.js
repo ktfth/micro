@@ -1,13 +1,6 @@
 var root = this;
 var template = null;
-// core modules
-var vm = require('vm');
-var fs = require('fs');
-var path = require('path');
-var util = require('util');
 // identifiers
-const {s, e, ext} = require('./template-constants');
-
 class Template {
   constructor(expression) {
     this.expression = expression;
