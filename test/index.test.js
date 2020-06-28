@@ -20,6 +20,18 @@ describe('Template', function () {
       .eql(expected);
   });
 
+  it('should delimiter have positions of the occurrence after a point', function () {
+    var actual = new template.Instance('{{ hello }} {{ world }}');
+    var expected = [
+      12, 21, ' world ',
+    ];
+
+    actual
+      .delimiter(9)
+      .should
+      .eql(expected);
+  });
+
   it('delimiter', function () {
     var actual = '{{ hello }}';
     var expected = [

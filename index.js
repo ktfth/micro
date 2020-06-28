@@ -15,8 +15,8 @@ class Template {
     this.expression = expression;
   }
 
-  delimiter() {
-    return templateDelimiterHandler(this.expression);
+  delimiter(pointer=0) {
+    return templateDelimiterHandler(this.expression, pointer);
   }
 }
 root.Instance = Template;
