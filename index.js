@@ -30,6 +30,10 @@ class Template {
   run(ctx) {
     return template(this.expression).run(ctx);
   }
+
+  render(ctx, renderExpression) {
+    return template(this.expression).render(ctx, renderExpression);
+  }
 }
 root.Instance = Template;
 

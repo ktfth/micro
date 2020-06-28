@@ -111,7 +111,7 @@ describe('Template replace', function () {
   });
 });
 
-describe('Template', function () {
+describe('Template context', function () {
   it('should have a context replacement', function () {
       var actual = new template.Instance('{{ hello }} {{ world }}');
       var expected = ' fizz   buzz ';
@@ -203,6 +203,25 @@ describe('Template', function () {
       .should
       .have
       .property('_compiled', expected);
+  });
+});
+
+describe('Template render', function () {
+  it('should have processed data', function () {
+    var actual = new template.Instance(
+      '{{var result = firstValue + secondValue}}'
+    );
+    var ctx = {
+      firstValue: 2,
+      secondValue: 3,
+    };
+    var renderExpression = '{{result, firstValue, secondValue}}';
+    var expected = '5, 2, 3';
+
+    actual
+      .render(ctx, renderExpression)
+      .should
+      .eql(expected);
   });
 
   it('render', function () {
