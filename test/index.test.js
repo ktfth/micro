@@ -58,6 +58,19 @@ describe('Template delimiter', function () {
 });
 
 describe('Template', function () {
+  it('should be replace by a context variable', function () {
+    var actual = new template.Instance(' hello ');
+    var expected = ' buzz ';
+    var ctx = {
+      hello: 'buzz',
+    };
+
+    actual
+      .replace(ctx)
+      .should
+      .eql(expected);
+  });
+
   it('replace', function () {
     var actual = ' hello ';
     var expected = ' buzz ';

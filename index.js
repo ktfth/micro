@@ -18,6 +18,10 @@ class Template {
   delimiter(pointer=0) {
     return templateDelimiterHandler(this.expression, pointer);
   }
+
+  replace(ctx) {
+    return templateReplaceHandler(this.expression, ctx);
+  }
 }
 root.Instance = Template;
 
