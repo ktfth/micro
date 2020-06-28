@@ -1,7 +1,7 @@
 var should = require('should');
 var template = require('../');
 
-describe('Template', function () {
+describe('Template delimiter', function () {
   it('should be an instance of', function () {
     var actual = new template.Instance();
 
@@ -55,7 +55,9 @@ describe('Template', function () {
       .should
       .eql( expected );
   });
+});
 
+describe('Template', function () {
   it('replace', function () {
     var actual = ' hello ';
     var expected = ' buzz ';
