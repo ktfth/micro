@@ -3,6 +3,7 @@ const templateCompileHandler = require('./template-compile');
 
 module.exports = exports = function templateRunHandler ( ctx ) {
   var self = this;
+  self.vm = true;
   var input = templateCompileHandler.call( self, ctx );
   var ctx = vm.createContext( ctx );
   var cache = 'micro.vm';

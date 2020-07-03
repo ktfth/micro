@@ -16,7 +16,7 @@ module.exports = exports = function templateCompileHandler ( ctx ) {
   while ( root.delimiter( out )[0] !== -1 ) {
     delimitation = root.delimiter( out );
     content = delimitation[2];
-    delimitation[2] = root.replace( content, ctx );
+    delimitation[2] = root.replace.call(self, content, ctx );
 
     out = out.replace( start + content + end, delimitation[2] );
   }

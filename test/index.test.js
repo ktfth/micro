@@ -226,6 +226,23 @@ describe('Template render', function () {
       .eql(expected);
   });
 
+  // it.only('should have processed data using a function', function () {
+  //   var actual = new template.Instance(
+  //     '{{var result = (firstValue, secondValue) => firstValue + secondValue}}'
+  //   );
+  //   var ctx = {
+  //     firstValue: 2,
+  //     secondValue: 3
+  //   };
+  //   var renderExpression = '{{result(firstValue, secondValue), firstValue, secondValue}}';
+  //   var expected = '5, 2, 3';
+  //
+  //   actual
+  //     .render(ctx, renderExpression)
+  //     .should
+  //     .eql(expected);
+  // });
+
   it('should have processed data from file', function () {
     var actual = new template.Instance();
     var filename = './test/case/render.mic';
